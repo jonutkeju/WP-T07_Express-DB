@@ -95,3 +95,26 @@ export async function updateProduct(req: Request, res: Response) {
     res.status(500).json({ message: 'Gagal mengupdate produk' });
   }
 }
+
+export async function deleteProduct(req: Request, res: Response) {
+  try {
+    const id = Number(req.params.id ?? req.body.id);
+
+    if (!id || isNaN(id)) {
+      res.status(400).json({ message: 'Validasi gagal: ID produk tidak valid' });
+      return;
+    }
+
+    const existingProduct = await prisma.product.findUnique({ where: { id } });
+    if (!existingProduct) {
+      res.status(404).json({ message: 'Produk yang akan dihapus tidak ditemukan' });
+      return;
+    }
+
+    await prisma.product.delete({ where: { id } });
+
+    res.status(200).json({ message: `Produk dengan id ${id} berhasil dihapus` });
+  } catch (error) {
+    res.status(500).json({ message: 'Gagal menghapus produk' });
+  }
+}
