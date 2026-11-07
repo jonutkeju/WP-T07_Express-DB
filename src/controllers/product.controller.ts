@@ -31,3 +31,29 @@ export async function getProductById(req: Request, res: Response) {
     res.status(500).json({ message: 'Terjadi kesalahan pada server' });
   }
 }
+
+export async function createProduct(req: Request, res: Response) {
+  try {
+    const { name, price } = req.body;
+
+    if (!name || typeof name !== 'string' || name.trim() === '') {
+      res.status(400).json({ message: 'Validasi gagal: name wajib diisi berupa teks' });
+      return;
+    }
+    if (price === undefined || isNaN(Number(price)) || Number(price) < 0) {
+      res.status(400).json({ message: 'Validasi gagal: price wajib diisi berupa angka positif' });
+      return;
+    }
+
+    const newProduct = await prisma.product.create({
+      data: {
+        name: name.trim(),
+        price: Number(price),
+      },
+    });
+
+    res.status(201).json(newProduct);
+  } catch (error) {
+    res.status(500).json({ message: 'Gagal membuat produk baru' });
+  }
+}
