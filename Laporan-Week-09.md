@@ -64,7 +64,7 @@ Pastikan server sudah berjalan di `http://localhost:3000` sebelum mengirim reque
 - Hasil: `200 OK` dengan body JSON berisi produk Buku dan Pulpen.
 
 
-![Hasil GET seluruh produk](assets/GET_products_db.png)
+![Hasil GET seluruh produk](assets/T06/GET_products_db.png)
 
 ### 2. Menampilkan produk berdasarkan ID — `GET /products/1`
 
@@ -74,7 +74,7 @@ Pastikan server sudah berjalan di `http://localhost:3000` sebelum mengirim reque
 - Hasil: `200 OK` dengan objek produk Buku yang memiliki `id` `1`.
 
 
-![Hasil GET produk berdasarkan ID](assets/GET_products_200.png)
+![Hasil GET produk berdasarkan ID](assets/T06/GET_products_200.png)
 
 ### 3. Menampilkan produk dengan ID yang tidak ditemukan — `GET /products/999`
 
@@ -84,7 +84,7 @@ Pastikan server sudah berjalan di `http://localhost:3000` sebelum mengirim reque
 - Hasil: `404 Not Found` dengan pesan bahwa produk tidak ditemukan.
 
 
-![Hasil GET produk yang tidak ditemukan](assets/GET_products_404.png)
+![Hasil GET produk yang tidak ditemukan](assets/T06/GET_products_404.png)
 
 ### 4. Menambahkan produk baru — `POST /products`
 
@@ -104,4 +104,4 @@ Pastikan server sudah berjalan di `http://localhost:3000` sebelum mengirim reque
 - Hasil: `201 Created` dengan objek produk baru dan ID yang dibuat otomatis (`id: 3`).
 
 
-![Hasil POST produk baru](assets/POST_products_201.png)
+![Hasil POST produk baru](assets/T06/POST_products_201.png)
